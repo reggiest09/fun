@@ -1,0 +1,246 @@
+<div class="container">
+  
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Xt5tpahxhQU?autoplay=1"></iframe>
+  </div>
+</div>
+
+<div class="space-200">&nbsp;</div>
+<div class="section-title text-center">
+
+                                <h2>GO FUND  <span>TAPS</span></h2>
+                                <%= image_tag 'title-bottom.png', alt:""%>
+                                <div class="container">
+                                <p>We are Teaching Athletes Plans for Success Inc. (T.A.P.S)!<br>
+                                A nonprofit organization supporting at-risk urban youth.  Our goal is the help our youth recognize their full potential on and off the playing courts and fields. We strive to assist our youth in identifying their strengths and develop a plan to execute their dreams.</p>
+                            </div>
+                            </div>
+                           
+      <div class="space-200">&nbsp;</div>
+      <div class="donet-error-page text-center">
+     
+                                <h3> GO FUND TAPS <span>PERKS</span></h3>
+                                  <%= image_tag 'title-bottom.png', alt:""%>
+                            </div>
+     <div class="space-20">&nbsp;</div>
+      <div class="page-damy-content pt-90 pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                           <h2>$20 Donation</h2>
+                            <p>Thank you and we’ll follow you on all of our social media profiles.</p>
+                        </div>
+
+                        <div class="col-sm-12">
+                        <h2>$50 Donation</h2>
+                            <p>(All the above)plus: Name or social media handle in the sponsor section of the website</p>
+                        </div>
+                        <div class="col-sm-12">
+                           <h2>$100 Donation </h2>
+                            <p>(All the above) plus: You will get your name and social media handle in the sponsor section, along with your submitted headshot.</p>
+                        </div>
+                        <div class="col-sm-12">
+                        <h2>$500 Donation</h2>
+                            <p>(All the above) plus: Personal thank you video from Jermaine Smith</p>
+                            
+                        </div>
+                        <div class="col-sm-12">
+                        <h2>$1000 Donation</h2>
+                            <p>(All the above) plus:???.</p>
+                          
+                        </div>
+                        <div class="col-sm-12">
+                        <h2>$5000 Donation</h2>
+                            <p>(All the above) plus: ??..</p>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-20">&nbsp;</div>
+
+         <section class="error-page-donate pt-90 pb-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="donet-error-page text-center">
+                                <h3>Want to donate? <span>It’s time to show your humility</span></h3>
+                                <!-- <a href="" class="btn-md bo-ra-5">Donate Now</a> -->
+                                <%= form_tag charges_path do %>
+  <div id="error_explanation">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+  </div>
+ <div>
+    <%=label_tag(:amount, 'Donation Amount:') %>
+    <%= text_field_tag(:amount) %>
+ </div>
+  <article>
+    <%= hidden_field_tag(:stripeToken) %>
+  </article>
+ <div class="form-button">
+  <button id='donateButton'>
+  <span>Donate</span></button>
+  </div>
+<% end %>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= ENV['stripe_publishable_key'] %>',
+  locale: 'auto',
+  name: 'GO FUND TAPS',
+  description: 'One-time donation',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+$('#donateButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 1.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $1.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
+
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+  handler.close();
+});
+</script>                                          
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+              <section class="about-content-area pt-90 pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="about-content">
+                                <!-- Start section title -->
+                                <div class="section-title text-center">
+                                    <h2>Listen <span>UP</span></h2>
+                                     <%= image_tag 'title-bottom.png', alt:""%>
+                                </div>
+                                <!-- End section title -->
+                                <p>Lorem ipsum dolor sit amet, consectetur adipi elit. Cras mollis ligula mauris, vitae porttitor nunc maximus Integer fringilla place acLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras  mauris, vitae porttitor nunc maximus a. Integer fringilla placerat leo ac bibendum. Quisque et neque eu magna cula pellentesque. Nam volutpat scelerisque tellus, vel ultrices arcu blandit vel. Curabitur semper cursus nulla, et accumsan nisl eleifend a. Integer vitae nisi quis arcu vehicula pharetra ac blandit purus. </p>
+                                <p>Etiam ut erat et nisi pulvinar accumsan. Curabitur imperdiet at sem vel elementum. Sed eget vestibulum purus. Quisque rhoncus leo vitae sem scelerisque varius.</p>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Xt5tpahxhQU?"></iframe>
+  </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                <div class="space-200">&nbsp;</div>
+
+            
+            <!-- End up comming area -->
+            <!-- Start brand logo area -->
+            <section class="brand-logo-area pb-90">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start section title -->
+                        <div class="col-sm-12">
+                         
+                            <div class="section-title text-center">
+                                <h2>Our <span>Sponsors</span></h2>
+                                <p> Your picture can go here</p>
+                                <%= image_tag 'title-bottom.png', alt:""%>
+                            </div>
+                        </div>
+                        <!-- End section title -->
+                        <!-- Start brand logo -->
+                        <div class="brand-logo">
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                                    <%= image_tag 'def.png', alt:""%>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                                    <%= image_tag 'def.png', alt:""%>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                                    <%= image_tag 'def.png', alt:""%>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                                    <%= image_tag 'def.png', alt:""%>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                                   <%= image_tag 'def.png', alt:""%>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="b-logo">
+                            <%= image_tag 'def.png', alt:""%>
+                            </div>
+                        </div>
+                        <!-- End brand logo -->
+                    </div>
+                </div>
+            </section>
+         <!-- end of payment options -->
+
+
+
+
+
+              <section class="slider-animate-area pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="cd-intro">
+                                <h1 class="cd-headline clip is-full-width title1 wow zoomIn animated" data-wow-duration="1s" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1s; animation-delay: 300ms; animation-name: zoomIn;">
+                                    <span>TAPS EDUCATION AND </span>
+                                    <span class="cd-words-wrapper">
+                                        <b class="is-visible">SPORTS</b>
+                                        <!-- <b>VS</b> -->
+                                        <b> ACADEMY </b>
+                                    </span>
+                                </h1>
+                                <p class="wow zoomIn animated" data-wow-duration="1s" data-wow-delay="600ms" style="visibility: visible; animation-duration: 1s; animation-delay: 600ms; animation-name: zoomIn;">We need to raise $50,000, but we cant do it by ourselves. We need you to reach deep in your pockets..</p>
+                                <div class="slider-button-area wow zoomIn animated" data-wow-duration="1s" data-wow-delay="900ms" style="visibility: visible; animation-duration: 1s; animation-delay: 900ms; animation-name: zoomIn;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <div class="space-200">&nbsp;</div> 
+              
+         <!-- end of payment options --> 
